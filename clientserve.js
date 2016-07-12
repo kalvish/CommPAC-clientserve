@@ -30,4 +30,43 @@ function serverCallback(request, response) {
     }).resume();
 }
 
+var io = require('socket.io').listen(app, {
+    log: true,
+    origins: '*:*'
+});
+
+/*io.set('transports', [
+    // 'websocket',
+    //'xhr-polling',
+    //'jsonp-polling'
+    'websocket',
+    'polling'
+]);*/
+
+// io.sockets.on('connection', function (socket) {
+//     var initiatorChannel = '';
+//     if (!io.isConnected) {
+//         io.isConnected = true;
+//     }
+
+//     console.log('Client said: ', 'test');
+
+//     socket.emit('create or join', "temproom");
+
+// socket.on('message-peer', function(message) {
+//   //console.log('Client received message ', message);
+//   console.log('Client-peer received message ', message);
+// });
+// });
+
+var socket = require('socket.io-client')('https://localhost:8080');
+  socket.on('connect', function(){});
+  socket.on('event', function(data){});
+  socket.on('disconnect', function(){});
+  socket.emit('create or join', "temproom");
+  socket.on('message-peer', function(message) {
+  //console.log('Client received message ', message);
+  console.log('Client-peer received message ', message);
+});
+
 app.listen(8081);
