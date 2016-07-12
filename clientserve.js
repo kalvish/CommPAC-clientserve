@@ -59,7 +59,7 @@ var io = require('socket.io').listen(app, {
 // });
 // });
 
-var socket = require('socket.io-client')('https://localhost:8080');
+var socket = require('socket.io-client')('https://localhost:8080',{secure: true, port:6060});
   socket.on('connect', function(){});
   socket.on('event', function(data){});
   socket.on('disconnect', function(){});
